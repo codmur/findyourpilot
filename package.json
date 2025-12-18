@@ -26,6 +26,7 @@
     "@vis.gl/react-google-maps": "^1.7.1",
     "drizzle-orm": "^0.44.7",
     "framer-motion": "^12.23.12",
+    "nitro": "^3.0.1-alpha.1",
     "postgres": "^3.4.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -34,17 +35,17 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.8",
-    "vite-tsconfig-paths": "^5.1.4",
     "@tanstack/react-router-ssr-query": "^1.139.7",
-    "tailwindcss": "^4.1.17",
     "@types/google.maps": "^3.58.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "drizzle-kit": "^0.31.7",
     "jsdom": "^27.2.0",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "vite": "^7.2.4",
+    "vite-tsconfig-paths": "^5.1.4",
     "web-vitals": "^5.1.0"
   }
 }
