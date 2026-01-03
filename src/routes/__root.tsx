@@ -5,8 +5,7 @@ import {
 	HeadContent,
 	Scripts
 } from "@tanstack/react-router"
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools"
-import { HeroUIProvider } from "@/integrations/heroui/provider"
+import { Devtools } from "@/integrations/devtools"
 import { SonnerProvider } from "@/integrations/sonner/provider"
 import { user } from "@/lib/server/user"
 
@@ -17,10 +16,7 @@ interface MyRouterContext {
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
 	beforeLoad: async () => {
-		const userData = await user.userData()
-		return {
-			...userData
-		}
+		return await user.userData()
 	},
 	head: () => ({
 		meta: [
@@ -60,10 +56,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 							"radial-gradient(50% 50% at 95% 5%, #34d399 0%, #6ee7b7 70%, #f5f5f5 100%)"
 					}}
 				>
-					<HeroUIProvider>{children}</HeroUIProvider>
+					{children}
 				</div>
 				<SonnerProvider />
-				<TanStackRouterDevtools />
+				<Devtools />
 				<Scripts />
 			</body>
 		</html>

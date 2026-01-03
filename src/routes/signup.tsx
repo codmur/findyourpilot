@@ -1,4 +1,14 @@
-import { Button, Form, Input } from "@heroui/react"
+import {
+	Button,
+	FieldError,
+	FieldGroup,
+	Fieldset,
+	FieldsetLegend,
+	Form,
+	Input,
+	Label,
+	TextField
+} from "@heroui/react"
 import { createFileRoute } from "@tanstack/react-router"
 import type { FormEvent } from "react"
 import { useSignup } from "@/lib/hooks/user/useSignup"
@@ -25,19 +35,39 @@ function SignupComp() {
 
 	return (
 		<div className="flex justify-center items-center flex-col h-screen">
-			<p className="font-semibold mb-3">Signup</p>
 			<Form
 				validationErrors={errors}
 				className="grid gap-2 max-w-sm w-full"
 				onSubmit={handleSubmit}
 			>
-				<Input name="email" type="email" label="Email" />
-				<Input name="password" type="password" label="Password" />
-				<Input name="nombre" label="Name" />
-				<Input name="location" label="Location" />
-				<Button type="submit" isLoading={isPending}>
-					Enviar
-				</Button>
+				<Fieldset>
+					<FieldsetLegend className="font-semibold mb-3">Signup</FieldsetLegend>
+					<FieldGroup>
+						<TextField>
+							<Label>Email</Label>
+							<Input name="email" type="email" />
+							<FieldError />
+						</TextField>
+						<TextField>
+							<Label>Password</Label>
+							<Input name="password" type="password" />
+							<FieldError />
+						</TextField>
+						<TextField>
+							<Label>Name</Label>
+							<Input name="nombre" />
+							<FieldError />
+						</TextField>
+						<TextField>
+							<Label>Location</Label>
+							<Input name="location" />
+							<FieldError />
+						</TextField>
+					</FieldGroup>
+					<Button type="submit" isPending={isPending}>
+						Enviar
+					</Button>
+				</Fieldset>
 			</Form>
 		</div>
 	)

@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@100..900&family=Rubik+Vinyl&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Outfit:wght@100..900&family=Rubik+Vinyl&display=swap");
 @import "tailwindcss";
-@plugin '../integrations/heroui/heroui.ts';
+@import "@heroui/styles";
 
-@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
-@custom-variant dark (&:is(.dark *));
+@plugin "@iconify/tailwind4" {
+	prefixes: solar;
+	scale: 1.2;
+}
 
 body {
 	@apply m-0;
@@ -15,7 +17,7 @@ body {
 }
 
 @theme {
-  --font-outfit: "Outfit", sans-serif;
+	--font-outfit: "Outfit", sans-serif;
 	--font-rubik-vinyl: "Rubik Vinyl", cursive;
 	--font-luckiest-guy: "Luckiest Guy", cursive;
 }
@@ -24,5 +26,3 @@ code {
 	font-family:
 		source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-
-

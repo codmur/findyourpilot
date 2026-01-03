@@ -15,6 +15,7 @@ import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthedMapRouteImport } from './routes/_authed/map'
 import { Route as AuthedDashboardRouteImport } from './routes/_authed/dashboard'
 
 const SignupRoute = SignupRouteImport.update({
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthedMapRoute = AuthedMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedDashboardRoute = AuthedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/places': typeof PlacesRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthedDashboardRoute
+  '/map': typeof AuthedMapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/places': typeof PlacesRoute
   '/signup': typeof SignupRoute
   '/dashboard': typeof AuthedDashboardRoute
+  '/map': typeof AuthedMapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,12 +85,20 @@ export interface FileRoutesById {
   '/places': typeof PlacesRoute
   '/signup': typeof SignupRoute
   '/_authed/dashboard': typeof AuthedDashboardRoute
+  '/_authed/map': typeof AuthedMapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/logout' | '/places' | '/signup' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/logout'
+    | '/places'
+    | '/signup'
+    | '/dashboard'
+    | '/map'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/logout' | '/places' | '/signup' | '/dashboard'
+  to: '/' | '/login' | '/logout' | '/places' | '/signup' | '/dashboard' | '/map'
   id:
     | '__root__'
     | '/'
@@ -92,6 +108,7 @@ export interface FileRouteTypes {
     | '/places'
     | '/signup'
     | '/_authed/dashboard'
+    | '/_authed/map'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -147,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authed/map': {
+      id: '/_authed/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof AuthedMapRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/dashboard': {
       id: '/_authed/dashboard'
       path: '/dashboard'
@@ -159,10 +183,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthedRouteChildren {
   AuthedDashboardRoute: typeof AuthedDashboardRoute
+  AuthedMapRoute: typeof AuthedMapRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedDashboardRoute: AuthedDashboardRoute,
+  AuthedMapRoute: AuthedMapRoute,
 }
 
 const AuthedRouteWithChildren =

@@ -11,6 +11,7 @@ export const getRouter = () => {
 		routeTree,
 		context: { queryClient, user: null },
 		defaultPreload: "intent",
+		defaultNotFoundComponent: (e) => <p>Error: {JSON.stringify(e.data)}</p>,
 		Wrap: (props: { children: React.ReactNode }) => {
 			return (
 				<QueryProvider {...{ queryClient }}>{props.children}</QueryProvider>

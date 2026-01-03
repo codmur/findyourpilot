@@ -1,4 +1,14 @@
-import { Button, Form, Input } from "@heroui/react"
+import {
+	Button,
+	FieldError,
+	FieldGroup,
+	Fieldset,
+	FieldsetLegend,
+	Form,
+	Input,
+	Label,
+	TextField
+} from "@heroui/react"
 import { createFileRoute, redirect } from "@tanstack/react-router"
 import type { FormEvent } from "react"
 import { useLogin } from "@/lib/hooks/user/useLogin"
@@ -30,17 +40,35 @@ function LoginComp() {
 
 	return (
 		<div className="flex justify-center items-center flex-col h-screen">
-			<p className="font-semibold mb-3">Login</p>
 			<Form
 				validationErrors={errors}
 				className="grid gap-2 max-w-sm w-full"
 				onSubmit={handleSubmit}
 			>
-				<Input name="email" label="Email" />
-				<Input name="password" type="password" label="Password" />
-				<Button type="submit" isLoading={isPending}>
-					Entrar
-				</Button>
+				<Fieldset>
+					<FieldsetLegend className="text-center text-xl">Login</FieldsetLegend>
+					<FieldGroup>
+						<TextField
+							isRequired
+							defaultValue={import.meta.env.VITE_LOGIN_USER}
+						>
+							<Label>Email</Label>
+							<Input name="email" type="email" />
+							<FieldError />
+						</TextField>
+						<TextField
+							isRequired
+							defaultValue={import.meta.env.VITE_LOGIN_PASS}
+						>
+							<Label>Password</Label>
+							<Input name="password" type="password" />
+							<FieldError />
+						</TextField>
+						<Button fullWidth type="submit" isPending={isPending}>
+							Entrar
+						</Button>
+					</FieldGroup>
+				</Fieldset>
 			</Form>
 		</div>
 	)
