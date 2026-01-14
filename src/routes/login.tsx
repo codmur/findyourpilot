@@ -1,5 +1,8 @@
 import {
 	Button,
+	Card,
+	CardContent,
+	CardHeader,
 	FieldError,
 	FieldGroup,
 	Fieldset,
@@ -45,30 +48,36 @@ function LoginComp() {
 				className="grid gap-2 max-w-sm w-full"
 				onSubmit={handleSubmit}
 			>
-				<Fieldset>
-					<FieldsetLegend className="text-center text-xl">Login</FieldsetLegend>
-					<FieldGroup>
-						<TextField
-							isRequired
-							defaultValue={import.meta.env.VITE_LOGIN_USER}
-						>
-							<Label>Email</Label>
-							<Input name="email" type="email" />
-							<FieldError />
-						</TextField>
-						<TextField
-							isRequired
-							defaultValue={import.meta.env.VITE_LOGIN_PASS}
-						>
-							<Label>Password</Label>
-							<Input name="password" type="password" />
-							<FieldError />
-						</TextField>
-						<Button fullWidth type="submit" isPending={isPending}>
-							Entrar
-						</Button>
-					</FieldGroup>
-				</Fieldset>
+				<Card>
+					<CardHeader>
+						<h2 className="text-center text-xl font-semibold">Login</h2>
+					</CardHeader>
+					<CardContent>
+						<Fieldset>
+							<FieldGroup>
+								<TextField
+									isRequired
+									defaultValue={import.meta.env.VITE_LOGIN_USER}
+								>
+									<Label>Email</Label>
+									<Input name="email" type="email" />
+									<FieldError />
+								</TextField>
+								<TextField
+									isRequired
+									defaultValue={import.meta.env.VITE_LOGIN_PASS}
+								>
+									<Label>Password</Label>
+									<Input name="password" type="password" />
+									<FieldError />
+								</TextField>
+								<Button fullWidth type="submit" isPending={isPending}>
+									Entrar
+								</Button>
+							</FieldGroup>
+						</Fieldset>
+					</CardContent>
+				</Card>
 			</Form>
 		</div>
 	)

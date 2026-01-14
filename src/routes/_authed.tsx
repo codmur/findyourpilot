@@ -23,9 +23,13 @@ export const Route = createFileRoute("/_authed")({
 
 function RouteComponent() {
 	return (
-		<div>
-			<Sidebar />
-			<Outlet />
+		<div className="min-h-screen flex gap-2">
+			<div className="p-2">
+				<Sidebar />
+			</div>
+			<div className="sm:pl-25 w-full">
+				<Outlet />
+			</div>
 		</div>
 	)
 }

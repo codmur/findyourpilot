@@ -41,7 +41,7 @@ export const Sidebar = () => {
 			<nav className="flex flex-col gap-6 w-full items-center flex-1 justify-center">
 				<Tabs orientation="vertical" onSelectionChange={onSelection}>
 					<TabListContainer>
-						<TabList className="bg-transparent w-20 gap-4 *:data-selected:text-accent">
+						<TabList className="bg-transparent w-20 gap-4 *:data-selected:text-accent transition-all duration-500 ease-in-out">
 							<Tab
 								id="home"
 								className="w-20 data-selected:*:nth-1:bg-accent-soft-hover"
@@ -49,16 +49,16 @@ export const Sidebar = () => {
 								<div className="rounded-xl flex p-2 items-center justify-center mb-2 shadow-inner shadow-accent/5">
 									<span className="iconify solar--home-2-bold size-6" />
 								</div>
-								<TabIndicator className="w-1 bg-accent -left-2" />
+								<TabIndicator className="w-1  bg-accent -left-1.5" />
 							</Tab>
 							<Tab
 								id="map"
-								className="w-20 data-selected:*:nth-1:bg-accent-soft-hover"
+								className="w-20 data-selected:*:nth-1:bg-accent-soft-hover "
 							>
 								<div className="rounded-xl flex p-2 items-center justify-center mb-2 shadow-inner shadow-accent/5">
 									<span className="iconify solar--map-bold size-6" />
 								</div>
-								<TabIndicator className="w-1 bg-accent -left-2" />
+								<TabIndicator className="w-1 bg-accent -left-1.5" />
 							</Tab>
 						</TabList>
 					</TabListContainer>

@@ -40,8 +40,22 @@ export const getUserPlacesById = createServerFn()
 			.offset((data.page - 1) * data.limit)
 	})
 
+export const getUserPlacesByUser = createServerFn()
+	.inputValidator(
+		paginatedPlacesValidationSchema.pick({ page: true, limit: true })
+	)
+	.handler(async ({ data }) => {
+		console.log(data)
+		return await db()
+			.select()
+			.from(placesSchema)
+			.limit(data.limit)
+			.offset((data.page - 1) * data.limit)
+	})
+
 export const places = {
 	insertUserPlace,
 	editUserPlace,
-	getUserPlacesById
+	getUserPlacesById,
+	getUserPlacesByUser
 }
